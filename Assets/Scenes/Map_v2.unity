@@ -29703,6 +29703,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6730141829233034860, guid: f03787c3c12e5504a9038bcf87fd1fa0, type: 3}
   m_PrefabInstance: {fileID: 4552720118669879074}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1193056863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193056858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f496b0bb2a1faee4fa4412192fc2b423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1193056864}
+--- !u!143 &1193056864
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193056858}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.36
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.04, z: 0}
 --- !u!1001 &1197612356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51212,6 +51251,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7850745118437237838, guid: f03787c3c12e5504a9038bcf87fd1fa0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1193056859}
+    - targetCorrespondingSourceObject: {fileID: 7850745118437237838, guid: f03787c3c12e5504a9038bcf87fd1fa0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1193056864}
+    - targetCorrespondingSourceObject: {fileID: 7850745118437237838, guid: f03787c3c12e5504a9038bcf87fd1fa0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1193056863}
   m_SourcePrefab: {fileID: 100100000, guid: f03787c3c12e5504a9038bcf87fd1fa0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
