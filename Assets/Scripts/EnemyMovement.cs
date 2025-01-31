@@ -18,6 +18,9 @@ public class EnemyMovement : MonoBehaviour
     // Приватная переменная для хранения ссылки на компонент PlayerHealth игрока
     private PlayerHealth playerHealth;
 
+    // Приватная переменная для хранения ссылки на компонент Animator
+    private Animator animator;
+
     // Метод Start вызывается перед первым кадром
     private void Start()
     {
@@ -30,6 +33,9 @@ public class EnemyMovement : MonoBehaviour
             // Получаем компонент PlayerHealth игрока
             playerHealth = playerObject.GetComponent<PlayerHealth>();
         }
+
+        // Получаем компонент Animator
+        animator = GetComponent<Animator>();
     }
 
     // Метод Update вызывается каждый кадр
@@ -54,6 +60,8 @@ public class EnemyMovement : MonoBehaviour
                 if (distanceToPlayer > attackRadius)
                 {
                     transform.position += direction * speed * Time.deltaTime;
+                    // Устанавливаем анимацию движения
+                    animator.SetBool("isMoving", true);
                 }
                 // Если враг находится в радиусе атаки и прошло достаточно времени с последней атаки
                 else if (Time.time - lastAttackTime >= attackCooldown)
@@ -64,6 +72,11 @@ public class EnemyMovement : MonoBehaviour
                     lastAttackTime = Time.time;
                 }
             }
+            else
+            {
+                // Останавливаем анимацию движения
+                animator.SetBool("isMoving", false);
+            }
         }
     }
 
@@ -73,8 +86,12 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("Враг атакует игрока!");
         if (playerHealth != null)
         {
+            // Устанавливаем анимацию атаки
+            animator.SetTrigger("attack");
             // Наносим урон игроку
             playerHealth.TakeDamage(attackDamage);
         }
     }
+
+    
 }

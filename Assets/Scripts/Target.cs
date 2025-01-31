@@ -13,6 +13,9 @@ public class Target : MonoBehaviour
     // Переменная для хранения ссылки на камеру
     private Camera mainCamera;
 
+    // Приватная переменная для хранения ссылки на компонент Animator
+    private Animator animator;
+
     private void Start()
     {
         // Инициализируем максимальное здоровье
@@ -20,6 +23,9 @@ public class Target : MonoBehaviour
 
         // Получаем ссылку на основную камеру
         mainCamera = Camera.main;
+
+        // Получаем компонент Animator
+        animator = GetComponent<Animator>();
 
         // Инициализируем слайдер здоровья
         if (healthBar != null)
@@ -48,6 +54,12 @@ public class Target : MonoBehaviour
     {
         // Уменьшаем здоровье на величину урона
         health -= amount;
+
+        // Воспроизводим анимацию получения урона
+        if (animator != null)
+        {
+            animator.SetTrigger("hit");
+        }
 
         // Обновляем слайдер здоровья
         UpdateHealthBar();
@@ -78,7 +90,16 @@ public class Target : MonoBehaviour
             Destroy(healthBar.gameObject);
         }
 
+        // Воспроизводим анимацию смерти
+        if (animator != null)
+        {
+            animator.SetTrigger("die");
+        }
+
+        // Отключаем все действия врага
+        this.enabled = false;
+
         // Уничтожаем объект
-        Destroy(gameObject);
+        Destroy(gameObject, 6f); // Уничтожаем объект с задержкой, чтобы анимация смерти успела воспроизвестись
     }
 }
